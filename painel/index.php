@@ -10,6 +10,7 @@ $db -> dbConn();
 $cadastro = new Cadastrar;
 $cadastro -> cadastrar();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,13 +36,13 @@ $cadastro -> cadastrar();
   <main role="main" class="container">
     <div class="jumbotron">
       <h1>Cadastrar equipe</h1>
-      <form action="php/cadastrarequipe.php" method="post">
+      <form action="index.php" method="POST">
         <h4>Nome do membro</h4>
-        <input type="text"><br><br>
-        <h4>Descrição do membro</h4>
-        <textarea name="sobre" id="sobre" cols="140" rows="10"></textarea>
+        <input type="text" name="team-worker"><br><br>
+        <h4>Descrição do membro</h4> 
+        <textarea name="about" id="sobre" cols="140" rows="10"></textarea>
         <input type="hidden" name='cadastrar_equipe'>
-        <button class="btn btn-lg btn-primary" type="submit"> Enviar</button>
+        <button class="btn btn-lg btn-primary" name="cadastrar_equipe" type="submit"> Enviar</button>
       </form>
     </div>
   </main>
@@ -83,13 +84,6 @@ $cadastro -> cadastrar();
   </main>
 
 
-
-
-
-
-
-
-    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
