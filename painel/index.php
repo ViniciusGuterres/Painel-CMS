@@ -1,14 +1,10 @@
 <?php
 require_once "php/dbconnection.php";
-require_once "php/cadastrarequipe.php";
 
 //connection to data base stuffs 
 $db = new Connection;
 $db -> dbConn();
 
-//cadastro de equipe
-$cadastro = new Cadastrar;
-$cadastro -> cadastrar();
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +32,13 @@ $cadastro -> cadastrar();
   <main role="main" class="container">
     <div class="jumbotron">
       <h1>Cadastrar equipe</h1>
-      <form action="index.php" method="POST">
+      <form action="" method="POST">
         <h4>Nome do membro</h4>
         <input type="text" name="team-worker"><br><br>
         <h4>Descrição do membro</h4> 
         <textarea name="about" id="sobre" cols="140" rows="10"></textarea>
-        <input type="hidden" name='cadastrar_equipe'>
-        <button class="btn btn-lg btn-primary" name="cadastrar_equipe" type="submit"> Enviar</button>
+        <input type="submit" name='cadastrar_equipe'>
+        <!-- <button class="btn btn-lg btn-primary" name="cadastrar_equipe" type="submit"> Enviar</button> -->
       </form>
     </div>
   </main>
@@ -60,13 +56,22 @@ $cadastro -> cadastrar();
           </tr>
         </thead>
         <tbody>
+        <?php
+
+        $conn = new PDO("mysql:host=localhost:3325;dbname=cmd_project", 'root', '');
+        $selectTeam = $conn -> prepare("SELECT id,name FROM tb_equipe");
+        $selectTeam -> execute();
+        $team = $selectTeam -> fetchAll();
+        foreach($team as $key=>$value){
+        ?>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
+            <td><?php echo $value["id"];?></td>
+            <td><?php echo $value["name"]; ?></td>
             <td>@mdo</td>
           </tr>
           <tr>
+        <?php } ?>
             <th scope="row">2</th>
             <td>Jacob</td>
             <td>Thornton</td>
