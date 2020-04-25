@@ -4,7 +4,6 @@ require_once "php/dbconnection.php";
 $db = new Connection;
 $db -> dbConn();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,111 +14,58 @@ $db -> dbConn();
 </head>
 <body>
 
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <span data-feather="home"></span>
-              Dashboard <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
-              Orders
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              Products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- log ou -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"> -->
-
-  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
-      </li>
-    </ul>
-  </nav>
-
-  <main role="main" class="container">
-    <div class="jumbotron">
-      <h1>Cadastrar equipe</h1>
-      <form action="" method="POST">
-        <h4>Nome do membro</h4>
-        <input type="text" name="team-worker"><br><br>
-        <h4>Descrição do membro</h4> 
-        <textarea name="about" id="sobre" cols="140" rows="10"></textarea>
-        <input type="submit" name='cadastrar_equipe'>
-        <!-- <button class="btn btn-lg btn-primary" name="cadastrar_equipe" type="submit"> Enviar</button> -->
-      </form>
-    </div>
+  <!-- header -->
+  <main role="main" class="container-md-9 ml-sm-auto col-lg-10 px-5 " >
+    <header class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-2 shadow">
+      <h2 class="navbar-brand col-sm-3 col-md-2 mr-0">Team-Workers</h2>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Sign out</a>
+        </li>
+      </ul>
+    </header>
   </main>
 
+  <!-- worker register ajuste -->
+  <div class="card container mt-5 ">
+    <div class="card-header w-1">Cadastro</div>
+    <div class="card-body">
+      <form class="form-group" method="POST">
+        <!-- data for table -->
+        <div class="form-group">
+          <label for="" class="font-weight-bold">Nome completo</label>
+          <input type="text" class="form-control" name="team-worker" placeholder="Almeida de Carvalho">
+        </div>
+        <!-- data for table -->
+        <div class="form-group">
+          <label for="" class="font-weight-bold">Setor</label>
+          <select class="form-control" required>
+            <option selected value="0">Escolha um setor...</option>
+            <option value="Logistica">Logistica</option>
+            <option value="Fiscal">Fiscal</option>
+            <option value="Rh">Rh</option>
+            <option value="Fabril">Fabril</option>
+            <option value="Diretoria">Diretoria</option>
+          </select>
+        </div>
+        <!-- data for table -->
+        <div class="form-group">
+          <label for="" class="font-weight-bold">Descrição das atividades</label> 
+          <textarea name="about" id="sobre" class="form-control" rows="3"></textarea>
+          <small id="worker-description" class="form-text text-muted">Uma pequena descrição do funcionário.</small>
+        </div>
+        <!-- data file for table -->
+        <span class="font-weight-bold">Foto de perfil</span>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFile">
+          <label class="custom-file-label" for="customFile">Escolha um arquivo</label>
+        </div>
+          <button class="btn btn-secondary mt-3" name="cadastrar_equipe" type="submit"> Enviar</button>
+      </form>
+  </div>
+  </div>
+
+  <!-- workers controller need some ajusts -->
   <main role="main" class="container">
     <div class="jumbotron">
       <h1>Equipe</h1>
