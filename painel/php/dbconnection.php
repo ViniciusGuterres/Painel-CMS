@@ -30,6 +30,16 @@ class Connection {
             else {
                 echo 'Form not working';
             }
+
+            //delete workers from db
+            if(isset ($_POST['id_membro'])) {
+                $sql = ("DELETE FROM `tb_equipe` WHERE id = 95");
+                $conn ->exec($sql);
+              }
+              else {
+                echo 'error';
+              }
+
         }
         catch (PDOException $e) {
             throw new PDOException($e); 
