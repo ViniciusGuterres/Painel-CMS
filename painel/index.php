@@ -1,11 +1,17 @@
 <?php
-require_once "php/dbconnection.php";
-//connection to data base stuffs 
-$db = new Connection;
-$db -> dbConn();
+require_once "php/connection.php";
+require_once "php/employeesDao.php";
+// instance connection and excecuting the pdo function
+$connection = new Connection;
+$connection -> conn();
+// instance employees and executing the CRUD function
+$employeesDao = new EmployeesDao;
+if (isset($_POST["register"])) {
+  $employeesDao -> create($_POST['team-worker'], $_POST['about']);
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,7 +66,7 @@ $db -> dbConn();
           <input type="file" class="custom-file-input" id="customFile">
           <label class="custom-file-label" for="customFile">Escolha um arquivo</label>
         </div>
-          <button class="btn btn-secondary mt-3" name="cadastrar_equipe" type="submit"> Enviar</button>
+          <button class="btn btn-secondary mt-3" name="register" type="submit"> Enviar</button>
       </form>
   </div>
   </div>
