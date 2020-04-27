@@ -2,11 +2,11 @@
 require_once "connection.php";
 class EmployeesDao {
 
-    public function create($n,$d) {
+    public function create($employees) {
         $sql = "INSERT INTO tb_equipe(name, description) VALUES (?, ?)";
         $stmt = Connection::conn() -> prepare($sql);
-        $stmt -> bindValue(1, $n);
-        $stmt -> bindValue(2, $d);
+        $stmt -> bindValue(1, $employees->getName());
+        $stmt -> bindValue(2, $employees->getDescription());
         $stmt -> execute();
     }
 

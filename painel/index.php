@@ -1,14 +1,24 @@
 <?php
 require_once "php/connection.php";
+require_once "php/employees.php";
 require_once "php/employeesDao.php";
 // instance connection and excecuting the pdo function
 $connection = new Connection;
 $connection -> conn();
-// instance employees and executing the CRUD function
-$employeesDao = new EmployeesDao;
-if (isset($_POST["register"])) {
-  $employeesDao -> create($_POST['team-worker'], $_POST['about']);
+
+//instance employees 
+$employees = new Employees;
+if (isset($_POST['register'])) {
+  $employees -> setName($_POST['nameRegister']);
+  $employees -> setDescription($_POST['descriptionRegister']);
+  echo 'working';
 }
+
+
+// instance employeesDao and executing the CRUD function
+$employeesDao = new EmployeesDao;
+$employeesDao -> create($employees);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,15 +42,15 @@ if (isset($_POST["register"])) {
     </header>
   </main>
 
-  <!-- worker register ajuste -->
+  <!-- worker register (needs some ajust at front end card ) -->
   <div class="card container mt-5 ">
     <div class="card-header w-1">Cadastro</div>
     <div class="card-body">
-      <form class="form-group" method="POST">
+      <form class="form-group" method="POST" name="formRegister" onSubmit="return validation(this)">
         <!-- data for table -->
         <div class="form-group">
           <label for="" class="font-weight-bold">Nome completo</label>
-          <input type="text" class="form-control" name="team-worker" placeholder="Almeida de Carvalho">
+          <input type="text" class="form-control" name="nameRegister" placeholder="Almeida de Carvalho">
         </div>
         <!-- data for table -->
         <div class="form-group">
@@ -57,7 +67,7 @@ if (isset($_POST["register"])) {
         <!-- data for table -->
         <div class="form-group">
           <label for="" class="font-weight-bold">Descrição das atividades</label> 
-          <textarea name="about" id="sobre" class="form-control" rows="3"></textarea>
+          <textarea name="descriptionRegister" class="form-control" rows="3"></textarea>
           <small id="worker-description" class="form-text text-muted">Uma pequena descrição do funcionário.</small>
         </div>
         <!-- data file for table -->
@@ -111,6 +121,7 @@ if (isset($_POST["register"])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="js/delete.js"></script>
     <script src="js/jquery.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>
 
