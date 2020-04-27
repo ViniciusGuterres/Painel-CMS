@@ -6,19 +6,17 @@ require_once "php/employeesDao.php";
 $connection = new Connection;
 $connection -> conn();
 
-//instance employees 
+// instance employeesDao and executing the CRUD function
+$employeesDao = new EmployeesDao;
+
+//instance employees, it will pass form values to employeesDao
 $employees = new Employees;
 if (isset($_POST['register'])) {
   $employees -> setName($_POST['nameRegister']);
   $employees -> setDescription($_POST['descriptionRegister']);
-  echo 'working';
+  //this instance will call the create function to insert a form value
+  $employeesDao -> create($employees);
 }
-
-
-// instance employeesDao and executing the CRUD function
-$employeesDao = new EmployeesDao;
-$employeesDao -> create($employees);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
