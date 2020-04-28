@@ -13,6 +13,7 @@ $employeesDao = new EmployeesDao;
 $employees = new Employees;
 if (isset($_POST['register'])) {
   $employees -> setName($_POST['nameRegister']);
+  $employees -> setRole($_POST['roleRegister']);
   $employees -> setDescription($_POST['descriptionRegister']);
   //this instance will call the create function to insert a form value
   $employeesDao -> create($employees);
@@ -48,24 +49,23 @@ if (isset($_POST['register'])) {
         <!-- data for table -->
         <div class="form-group">
           <label for="" class="font-weight-bold">Nome completo</label>
-          <input type="text" class="form-control" name="nameRegister" placeholder="Almeida de Carvalho">
+          <input type="text" class="form-control" name="nameRegister" required placeholder="Almeida de Carvalho">
         </div>
         <!-- data for table -->
         <div class="form-group">
-          <label for="" class="font-weight-bold">Setor</label>
-          <select class="form-control" required>
-            <option selected value="0">Escolha um setor...</option>
-            <option value="Logistica">Logistica</option>
-            <option value="Fiscal">Fiscal</option>
-            <option value="Rh">Rh</option>
-            <option value="Fabril">Fabril</option>
-            <option value="Diretoria">Diretoria</option>
+          <label for="" class="font-weight-bold">Função</label>
+          <select name="roleRegister" class="form-control" required>
+            <option selected value="">Escolha uma função...</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Editor">Editor</option>
+            <option value="Colunista">Colunista</option>
+            <option value="Design">Design</option>
           </select>
         </div>
         <!-- data for table -->
         <div class="form-group">
           <label for="" class="font-weight-bold">Descrição das atividades</label> 
-          <textarea name="descriptionRegister" class="form-control" rows="3"></textarea>
+          <textarea name="descriptionRegister" class="form-control" rows="3" required></textarea>
           <small id="worker-description" class="form-text text-muted">Uma pequena descrição do funcionário.</small>
         </div>
         <!-- data file for table -->

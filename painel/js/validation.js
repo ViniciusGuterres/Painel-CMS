@@ -4,6 +4,10 @@ function validation(formRegister) {
         alert('Insira um nome');
         return false;
     }
+    if (formRegister.roleRegister.value == "") {
+        alert('Insira uma função');
+        return false;
+    }
     if (formRegister.descriptionRegister.value == "") {
         alert('Insira uma descrição');
         return false;
@@ -11,3 +15,4 @@ function validation(formRegister) {
     return true;
     
 }
+

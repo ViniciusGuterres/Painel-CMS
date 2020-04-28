@@ -4,6 +4,7 @@ class Employees {
 
     public $name;
     public $description;
+    public $role;
 
     function getName() {
         return $this -> name;
@@ -22,6 +23,12 @@ class Employees {
         $this -> description = $de;
     }
 
-    
-        
+    function getRole() {
+        return $this -> role;
+    }
+
+    function setRole($ro) {
+        $this -> role = $ro;
+    }
+  
 }
