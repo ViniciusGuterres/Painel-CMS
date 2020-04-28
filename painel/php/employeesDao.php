@@ -1,5 +1,5 @@
 <?php
-require_once "connection.php";
+namespace php;
 class EmployeesDao {
 
     public function create($employees) {
