@@ -1,5 +1,8 @@
 <?php
-require_once "vendor/autoload.php";
+// require_once "vendor/autoload.php";
+require_once "connection.php";
+require_once "employeesDao.php";
+require_once "employees.php";
 
 // instance connection and excecuting the pdo function
 $connection = new Connection;

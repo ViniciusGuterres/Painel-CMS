@@ -1,5 +1,5 @@
 <?php
-namespace php;
+// namespace php;
 class Employees {
 
     public $name;
