@@ -1,5 +1,5 @@
 <?php
-// namespace php;
+
 class Connection {
     
     public static $instance;

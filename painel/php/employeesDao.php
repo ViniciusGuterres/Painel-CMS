@@ -1,5 +1,5 @@
 <?php
-// namespace php;
+
 class EmployeesDao {
 
     public function create($employees) {
