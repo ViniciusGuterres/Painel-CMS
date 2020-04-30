@@ -12,7 +12,14 @@ class EmployeesDao {
     }
 
     public function read() {
-
+        $sql = "SELECT * FROM tb_equipe";
+        $stmt = Connection::conn() -> prepare($sql);
+        $stmt -> execute();
+        // surching for results
+        if ($stmt -> rowCount() > 0 ) {
+            $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
 
     public function update() {

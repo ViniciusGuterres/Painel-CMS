@@ -92,14 +92,9 @@ if (isset($_POST['register'])) {
           </tr>
         </thead>
         <tbody>
-
         <?php
-
-        $conn = new PDO("mysql:host=localhost:3325;dbname=cmd_project", 'root', '');
-        $selectTeam = $conn -> prepare("SELECT id,name FROM tb_equipe");
-        $selectTeam -> execute();
-        $team = $selectTeam -> fetchAll();
-        foreach($team as $key=>$value){
+        //will loking for registeded emplyees into the database
+        foreach($employeesDao->read() as $key=>$value){
         ?>
           <tr>
             <th scope="row"><?php echo $value['id'];  ?></th>
