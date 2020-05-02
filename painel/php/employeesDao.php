@@ -26,7 +26,13 @@ class EmployeesDao {
 
     }
 
-    public function delete() {
-
+    public function delete($id) {
+        $sql = "DELETE FROM tb_equipe WHERE id = ?";
+        $stmt = Connection::conn() -> prepare($sql);
+        $id = (int)$id;
+        $stmt -> bindValue(1, $id);
+        $stmt -> execute();
+        echo "<h1>Mundi wornking</h1>";
+        var_dump($id);
     }
 }

@@ -11,12 +11,18 @@ $employeesDao = new EmployeesDao;
 
 //instance employees, it will pass form values to employeesDao
 $employees = new Employees;
+
 if (isset($_POST['register'])) {
   $employees -> setName($_POST['nameRegister']);
   $employees -> setRole($_POST['roleRegister']);
   $employees -> setDescription($_POST['descriptionRegister']);
+
   //this instance will call the create function to insert a form value
   $employeesDao -> create($employees);
+}
+
+if (isset($_POST['id_membro'])) {
+    $employeesDao -> delete(($_POST['id_membro']));
 }
 ?>
 <!DOCTYPE html>
@@ -30,7 +36,7 @@ if (isset($_POST['register'])) {
 <body>
 
   <!-- header -->
-  <main role="main" class="container-md-9 ml-sm-auto col-lg-10 px-5 " >
+  <!-- <main role="main" class="container-md-9 ml-sm-auto col-lg-10 px-5 " >
     <header class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-2 shadow">
       <h2 class="navbar-brand col-sm-3 col-md-2 mr-0">Team-Workers</h2>
       <ul class="navbar-nav px-3">
@@ -39,7 +45,7 @@ if (isset($_POST['register'])) {
         </li>
       </ul>
     </header>
-  </main>
+  </main> -->
 
   <!-- worker register (needs some ajust at front end card ) -->
   <div class="card container mt-5 ">
@@ -99,7 +105,10 @@ if (isset($_POST['register'])) {
           <tr>
             <th scope="row"><?php echo $value['id'];  ?></th>
             <td><?php echo $value["name"];?></td>
-            <td><button type="button" class="btn btn-danger deletar-membro" id_membro="<?php echo $value['id'];?>">Deletar</button></td>
+            <td><button type="button" class="btn btn-danger deletar-membro" id_membro="
+            <?php 
+              echo $value['id'];
+            ?>">Deletar</button></td>
           </tr>
           <tr>
         <?php } ?>

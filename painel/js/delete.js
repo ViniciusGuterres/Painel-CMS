@@ -3,9 +3,9 @@ $('button.deletar-membro').click(function() {
     var el = $(this).parent().parent();
     
     $.ajax({
-        method: 'POST',
+        method: 'post',
         data: {'id_membro':id_membro},
-        url: 'php/dbconnection.php'
+        url: 'index.php'
     }).done(function() {
         el.remove();
     });

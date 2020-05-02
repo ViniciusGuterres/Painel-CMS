@@ -10,7 +10,6 @@ class Connection {
             try {
                 self::$instance = new PDO("mysql:host=localhost:3325;dbname=cmd_project",'root', '');
                 self::$instance -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo 'connection alrigt';
             }
             catch(PDOException $e) {
                 throw new PDOException;
