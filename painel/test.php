@@ -164,12 +164,6 @@
           <textarea name="descriptionRegister" class="form-control" rows="3" required></textarea>
           <small id="worker-description" class="form-text text-muted">Uma pequena descrição do funcionário.</small>
         </div>
-        <!-- data file for table -->
-        <span class="font-weight-bold">Foto de perfil</span>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFile">
-          <label class="custom-file-label" for="customFile">Escolha um arquivo</label>
-        </div>
           <button class="btn btn-secondary mt-3" name="register" type="submit"> Enviar</button>
       </form>
   </div>
