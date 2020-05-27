@@ -10,7 +10,7 @@ class Employees {
         return $this -> name;
     }
 
-    // will valited the form input name
+    // will validated the form input name
     function setName($no) {
         $this -> name = $no;
     }

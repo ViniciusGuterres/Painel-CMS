@@ -1,6 +1,12 @@
 <?php
 // require all php classes with autoload 
-require 'autoload.php';
+// require 'autoload.php';
+require_once ('php/blog.php');
+require_once ('php/blogDao.php');
+require_once ('php/employeesDao.php');
+require_once ('php/employees.php');
+require_once ('page.php');
+require_once ('php/connection.php');
 
 // instance connection and excecuting the pdo function
 $connection = new Connection;
@@ -24,6 +30,17 @@ if (isset($_POST['register'])) {
 if (isset($_POST['id_membro'])) {
     $employeesDao -> delete(($_POST['id_membro']));
 }
+
+if (isset($_POST['blogRegister'])) {
+  $blog = new Blog();
+  $blog -> setTitle($_POST['titleRegister']);
+  $blog -> setText($_POST['textRegister']);
+
+  $blogDao = new blogDao();
+
+  $blogDao -> create($blog);
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,6 +63,21 @@ if (isset($_POST['id_membro'])) {
       </ul>
     </header>
   </main> -->
+
+    <!-- text blog register -->
+    <div class="card container mt-5 ">
+    <div class="card-header w-1">texto</div>
+    <div class="card-body">
+      <form class="form-group" method="POST" name="textRegister" onSubmit="return validation(this)">
+        <!-- data for table -->
+        <div class="form-group">
+          <input type="text" class="form-control" name="titleRegister" required placeholder="Almeida de Carvalho">
+          <label for="" class="font-weight-bold">Seu texto aqui</label>
+          <textarea name="textRegister" class="form-control" rows="3" required></textarea>
+          <button class="btn btn-secondary mt-3" name="blogRegister" type="submit"> Enviar</button>
+        </div>
+    </div>
+  </div>
 
   <!-- worker register (needs some ajust at front end card ) -->
   <div class="card container mt-5 ">
@@ -82,7 +114,7 @@ if (isset($_POST['id_membro'])) {
         </div>
           <button class="btn btn-secondary mt-3" name="register" type="submit"> Enviar</button>
       </form>
-  </div>
+    </div>
   </div>
 
   <!-- workers controller need some ajusts -->
