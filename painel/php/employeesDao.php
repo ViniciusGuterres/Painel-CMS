@@ -3,7 +3,7 @@
 class EmployeesDao {
 
     public function create($employees) {
-        $sql = "INSERT INTO tb_equipe(name, role, description) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO tb_equipe(name, role, description, image, data) VALUES (?, ?, ?)";
         $stmt = Connection::conn() -> prepare($sql);
         $stmt -> bindValue(1, $employees->getName());
         $stmt -> bindValue(2, $employees->getRole());

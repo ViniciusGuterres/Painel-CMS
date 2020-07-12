@@ -5,6 +5,7 @@ class Employees {
     public $name;
     public $description;
     public $role;
+    public $image;
 
     function getName() {
         return $this -> name;
@@ -29,6 +30,14 @@ class Employees {
 
     function setRole($ro) {
         $this -> role = $ro;
+    }
+
+    function getImage() {
+        return $this -> image;
+    }
+
+    function setImage($im) {
+        $this -> image = $im;
     }
   
 }
